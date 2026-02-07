@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRC World Opener</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="container" role="main">
+        <header class="header">
+            <h1>🌐 VRC World Opener</h1>
+        </header>
+
+        <!-- 機能説明 -->
+        <div class="info-box" style="margin: 16px 0;">
+            <p>Xで <strong>#VRChat_World紹介</strong>
+                タグのポストを閲覧すると、ワールド名が自動検出され「ワールドを開く」または「ワールド名で検索する」ボタンが表示されます。
+            </p>
+        </div>
+
+        <!-- 有効/無効切り替え -->
+        <div class="toggle-section" role="region" aria-label="拡張機能の有効/無効設定">
+            <label class="toggle-label">
+                <span id="toggle-label-text">拡張機能を有効にする</span>
+                <input type="checkbox" id="enabled-toggle" checked aria-labelledby="toggle-label-text" role="switch">
+                <span class="toggle-slider" aria-hidden="true"></span>
+            </label>
+        </div>
+
+        <!-- 認証状態表示 -->
+        <div id="auth-status" class="auth-status" role="status" aria-live="polite">
+            <div class="loading">
+                <span class="spinner" aria-hidden="true"></span>
+                <span>読み込み中...</span>
+            </div>
+        </div>
+
+        <!-- ログインフォーム -->
+        <form id="login-form" class="login-form hidden" aria-label="ログインフォーム">
+            <div class="form-group">
+                <label for="username">ユーザー名</label>
+                <input type="text" id="username" placeholder="VRChatユーザー名" autocomplete="username" aria-required="true">
+            </div>
+            <div class="form-group">
+                <label for="password">パスワード</label>
+                <input type="password" id="password" placeholder="パスワード" autocomplete="current-password"
+                    aria-required="true">
+            </div>
+            <button type="button" id="login-btn" class="btn btn-primary">VRChatへログイン</button>
+            <p class="security-note">
+                🔒 ユーザー名とパスワードは<br>HTTPS通信でVRChat APIに安全に送信され、<br>ローカルには一切保存されません。
+            </p>
+            <div id="login-error" class="error-message hidden" role="alert" aria-live="assertive"></div>
+        </form>
+
+        <!-- 2FA認証フォーム -->
+        <form id="twofa-form" class="twofa-form hidden" aria-label="二要素認証フォーム">
+            <p class="twofa-message" id="twofa-description">二要素認証コードを入力してください</p>
+            <div class="form-group">
+                <label for="twofa-code" class="visually-hidden">認証コード</label>
+                <input type="text" id="twofa-code" placeholder="認証コード" maxlength="6" autocomplete="one-time-code"
+                    inputmode="numeric" pattern="[0-9]*" aria-required="true" aria-describedby="twofa-description">
+            </div>
+            <button type="button" id="twofa-btn" class="btn btn-primary">認証</button>
+            <button type="button" id="twofa-cancel-btn" class="btn btn-secondary">キャンセル</button>
+            <div id="twofa-error" class="error-message hidden" role="alert" aria-live="assertive"></div>
+        </form>
+
+        <!-- ログイン済み表示 -->
+        <div id="logged-in" class="logged-in hidden" role="region" aria-label="ログイン状態">
+            <div class="user-info">
+                <span class="status-badge" role="status">✅ ログイン中</span>
+                <p class="display-name" id="display-name" aria-label="表示名"></p>
+            </div>
+            <button type="button" id="logout-btn" class="btn btn-danger">ログアウト</button>
+        </div>
+
+        <!-- 詳細設定 -->
+        <div class="toggle-section" style="margin-top: 16px; margin-bottom: 16px;">
+            <p style="margin-bottom: 12px; font-size: 13px; color: #fff; font-weight: 600;">詳細設定</p>
+            <label class="toggle-label" style="margin-bottom: 8px;">
+                「ワールドを開く」ボタンを表示
+                <input type="checkbox" id="show-open-btn-toggle" checked>
+                <span class="toggle-slider"></span>
+            </label>
+            <label class="toggle-label">
+                「ワールド名で検索」ボタンを表示
+                <input type="checkbox" id="show-search-btn-toggle" checked>
+                <span class="toggle-slider"></span>
+            </label>
+            <p style="font-size: 10px; color: #aaa; margin-top: 8px;">※「ワールド名で検索」はログイン不要で利用可能です</p>
+        </div>
+
+        <footer class="footer">
+            <p>VRC World Opener v0.1.0β</p>
+            <p class="credit">by 鈴木ひじき</p>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

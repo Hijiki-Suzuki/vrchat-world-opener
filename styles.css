@@ -1,0 +1,62 @@
+/* VRC World Opener - Content Script Styles */
+/* X（Twitter）ページ内で表示されるボタンのスタイル */
+
+.vrchat-world-link-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 8px 0;
+    margin: 4px 0;
+}
+
+.vrchat-world-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    background: #151515;
+    /* マットな黒 */
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.vrchat-world-link-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    background: #000000;
+    /* ホバーで漆黒に */
+    border-color: #0694FF;
+    /* ホバーでVRChatブルーの枠 */
+    box-shadow: 0 4px 16px rgba(6, 148, 255, 0.3);
+    /* 青いグロー効果 */
+    filter: brightness(1.2);
+}
+
+.vrchat-world-link-btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.vrchat-world-link-btn:disabled {
+    opacity: 0.7;
+    cursor: wait;
+    background: #333;
+    color: #aaa;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+/* ダークモード対応 */
+@media (prefers-color-scheme: dark) {
+    .vrchat-world-link-btn {
+        background: #000000;
+        border-color: #333;
+    }
+}
