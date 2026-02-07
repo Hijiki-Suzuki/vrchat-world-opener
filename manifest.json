@@ -2,8 +2,8 @@
     "manifest_version": 3,
     "name": "VRC World Opener",
     "description": "X（Twitter）の#VRChat_World紹介からワールド名を検出し、VRChatワールドページへリンクします",
-    "version": "0.1.0",
-    "version_name": "0.1.0β",
+    "version": "0.1.1",
+    "version_name": "0.1.1β",
     "permissions": [
         "storage",
         "activeTab",

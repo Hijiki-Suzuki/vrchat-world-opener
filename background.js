@@ -14,7 +14,7 @@ const VRCHAT_API_BASE = 'https://api.vrchat.cloud/api/1';
 const SEARCH_RESULT_COUNT = 10;
 
 /** User-Agent（VRChat API利用規約準拠） */
-const USER_AGENT = 'VRCWorldOpener/1.0.0 (Chrome Extension; contact: developer)';
+const USER_AGENT = 'VRCWorldOpener/0.1.1β (Chrome Extension; contact: https://github.com/Hijiki-Suzuki/vrchat-world-opener)';
 
 /** ストレージキー */
 const STORAGE_KEYS = {
